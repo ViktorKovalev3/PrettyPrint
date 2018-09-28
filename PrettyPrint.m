@@ -9,13 +9,13 @@ PrintV;
 PrintV::usage="Print variable with precision and name";
 
 Begin["Private`"];
-PrintV[var_,precision_:2] := Print[
+PrintV[var_,precision_?IntegerQ:2] := Print[
 PrettyPrint`RemoveTrailingPoint[NumberForm[N@var,precision]//ToString//ToExpression]
 ];
-PrintV[name_?StringQ,var_,precision_:2] := Print[
+PrintV[name_?StringQ,var_,precision_?IntegerQ:2] := Print[
 name,"=", PrettyPrint`RemoveTrailingPoint[NumberForm[N@var,precision]//ToString//ToExpression]
 ];
-PrintV[name_?StringQ,var_?MatrixQ,precision_:2] := Print[
+PrintV[name_?StringQ,var_?MatrixQ,precision_?IntegerQ:2] := Print[
 name,"=", PrettyPrint`RemoveTrailingPoint[NumberForm[N@var,precision]//ToString//ToExpression]//MatrixForm
 ];
 
